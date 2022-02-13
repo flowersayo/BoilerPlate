@@ -6,6 +6,9 @@ const port = 5000
 const mongoose = require('mongoose');
 const {User} =require('./models/User');
 const bodyParser =require('body-parser');
+const mongoURI =require('./config/dev');
+
+const config = require('./config/key');
 
 // body -parser 는 클라이언트에서 오는 정보를 서버에서 분석해서 가져올 수 있게 해주는거! 
 
@@ -14,7 +17,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 // application/json
-mongoose.connect('mongodb+srv://flowersayo:RHVxep11INsgsWBr@cluster0.cop6l.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',{
+mongoose.connect(config.mongoURI,{
     //useNewUrlParser : true, useUnifiedTopology:true,useCreateIndex : true,useFindAndModify:false
 }).then(()=>console.log('MongoDB connected...'))
 .catch(err=>console.log(err))
