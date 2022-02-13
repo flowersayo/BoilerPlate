@@ -1,0 +1,24 @@
+{
+  "name": "boilerplate",
+  "version": "1.0.0",
+  "description": "React,Node,MongoDB 로 로그인/회원가입 기능이 구현된 BoilerPlate만들기",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flowersayo/BoilerPlate.git"
+  },
+  "author": "flowersayo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/flowersayo/BoilerPlate/issues"
+  },
+  "homepage": "https://github.com/flowersayo/BoilerPlate#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongoose": "^6.2.1"
+  }
+}
