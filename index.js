@@ -72,8 +72,36 @@ app.post('/api/users/login',(req,res)=>{
     })
 
 })
+//role
+//0 :일반 유저, 1 : 어드민 ,2 : 특정 부서 어드민
+app.get('/api/users/auth',auth,(req,res)=>{
+ //auth : 미들웨어 callback function을 수행하기 전에 동작.
 
+ // 미들웨어를 통과해 call back 이 실행됐다는 것은 Auth가 true라는 말 
 
+ res.status(200).json({
+     _id:req.user,
+     isAdmin: req.user.role ===0?false:true, 
+     isAuth : true,
+     name:req.user.name,
+     lastname:req.user.lastname,
+     role:req.user.role,
+     image:req.user.image
+
+ })
+ 
+})
+
+app.get('/api/users/logout',auth,(req,res)=>{
+
+    //auth 미들웨어에서 req.user에 값 넣어둠.
+    User.findOneAndUpdate({_id:req.user._id},
+        {token: ""}, // 토큰 삭제 
+        (err,user)=>{
+            if(err) return res.json({success:false,err})
+            else return res.status(200).send({success:true})
+        })
+})
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
